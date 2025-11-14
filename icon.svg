@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B7BD8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B5AAB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded rectangle with purple gradient -->
+  <rect width="1024" height="1024" rx="180" ry="180" fill="url(#purpleGradient)"/>
+
+  <!-- Large bold M that extends to edges -->
+  <path d="
+    M 80 900
+    L 80 124
+    L 280 124
+    L 512 550
+    L 744 124
+    L 944 124
+    L 944 900
+    L 744 900
+    L 744 420
+    L 562 780
+    L 462 780
+    L 280 420
+    L 280 900
+    Z
+  " fill="#FFFFFF"/>
+</svg>
