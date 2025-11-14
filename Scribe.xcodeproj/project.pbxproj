@@ -14,6 +14,8 @@
 		A1000005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000005 /* Assets.xcassets */; };
 		A1000006 /* CheckboxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000006 /* CheckboxHelper.swift */; };
 		A1000007 /* InteractiveMarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000007 /* InteractiveMarkdownView.swift */; };
+		A1000008 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000008 /* ThemeManager.swift */; };
+		A1000009 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000009 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A2000005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2000006 /* CheckboxHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxHelper.swift; sourceTree = "<group>"; };
 		A2000007 /* InteractiveMarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveMarkdownView.swift; sourceTree = "<group>"; };
+		A2000008 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		A2000009 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A4000001 /* Scribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scribe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -55,6 +59,8 @@
 				A2000003 /* ContentView.swift */,
 				A2000006 /* CheckboxHelper.swift */,
 				A2000007 /* InteractiveMarkdownView.swift */,
+				A2000008 /* ThemeManager.swift */,
+				A2000009 /* AboutView.swift */,
 				A2000005 /* Assets.xcassets */,
 				A2000004 /* Info.plist */,
 			);
@@ -149,6 +155,8 @@
 				A1000003 /* ContentView.swift in Sources */,
 				A1000006 /* CheckboxHelper.swift in Sources */,
 				A1000007 /* InteractiveMarkdownView.swift in Sources */,
+				A1000008 /* ThemeManager.swift in Sources */,
+				A1000009 /* AboutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

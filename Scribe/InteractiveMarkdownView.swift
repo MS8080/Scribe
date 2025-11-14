@@ -11,6 +11,7 @@ import MarkdownUI
 struct InteractiveMarkdownView: View {
     let text: String
     @Binding var documentText: String
+    @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
         ScrollView {
@@ -39,6 +40,7 @@ struct InteractiveMarkdownView: View {
                 // Render non-checkbox lines with Markdown
                 Markdown(line)
                     .markdownTheme(.gitHub)
+                    .foregroundColor(themeManager.currentTheme.textColor)
             }
         }
     }
@@ -58,6 +60,7 @@ struct CheckboxLineView: View {
     let onToggle: () -> Void
 
     @State private var isChecked: Bool
+    @EnvironmentObject var themeManager: ThemeManager
 
     init(line: String, lineNumber: Int, onToggle: @escaping () -> Void) {
         self.line = line
@@ -77,7 +80,7 @@ struct CheckboxLineView: View {
                 onToggle()
             }) {
                 Image(systemName: isChecked ? "checkmark.square.fill" : "square")
-                    .foregroundColor(isChecked ? .accentColor : .secondary)
+                    .foregroundColor(isChecked ? .accentColor : themeManager.currentTheme.textColor.opacity(0.6))
                     .font(.system(size: 16))
             }
             .buttonStyle(.plain)
@@ -86,6 +89,7 @@ struct CheckboxLineView: View {
             if let textContent = extractCheckboxText(from: line) {
                 Markdown(textContent)
                     .markdownTheme(.gitHub)
+                    .foregroundColor(themeManager.currentTheme.textColor)
             }
         }
         .padding(.vertical, 2)

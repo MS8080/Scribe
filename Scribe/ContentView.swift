@@ -11,19 +11,31 @@ import MarkdownUI
 struct ContentView: View {
     @Binding var document: MarkdownDocument
     @State private var showEditorPane = true
+    @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
         VStack(spacing: 0) {
-            // Toolbar with toggle control
+            // Toolbar with toggle control and theme picker
             HStack {
+                // Theme Picker
+                Picker("Theme", selection: $themeManager.currentTheme) {
+                    ForEach(AppTheme.allCases, id: \.self) { theme in
+                        Text(theme.rawValue).tag(theme)
+                    }
+                }
+                .pickerStyle(.menu)
+                .frame(width: 150)
+                .padding(.leading)
+
                 Spacer()
+
                 Toggle(isOn: $showEditorPane) {
                     Text("Show Editor")
                 }
                 .toggleStyle(.switch)
                 .padding()
             }
-            .background(Color(NSColor.windowBackgroundColor))
+            .background(themeManager.currentTheme.headerBackgroundColor)
 
             // Main content area
             if showEditorPane {
@@ -49,22 +61,30 @@ struct ContentView: View {
 
 struct EditorPane: View {
     @Binding var text: String
+    @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             // Header
             Text("Editor")
                 .font(.headline)
+                .foregroundColor(themeManager.currentTheme.textColor)
                 .padding(.horizontal)
                 .padding(.vertical, 8)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(NSColor.controlBackgroundColor))
+                .background(themeManager.currentTheme.headerBackgroundColor)
 
             // Text Editor
-            TextEditor(text: $text)
-                .font(.system(.body, design: .monospaced))
-                .padding(8)
-                .background(Color(NSColor.textBackgroundColor))
+            ZStack(alignment: .topLeading) {
+                themeManager.currentTheme.editorBackgroundColor
+                    .ignoresSafeArea()
+
+                TextEditor(text: $text)
+                    .font(.system(.body, design: .monospaced))
+                    .foregroundColor(themeManager.currentTheme.textColor)
+                    .scrollContentBackground(.hidden)
+                    .padding(8)
+            }
         }
     }
 }
@@ -73,20 +93,27 @@ struct EditorPane: View {
 
 struct PreviewPane: View {
     @Binding var documentText: String
+    @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             // Header
             Text("Preview")
                 .font(.headline)
+                .foregroundColor(themeManager.currentTheme.textColor)
                 .padding(.horizontal)
                 .padding(.vertical, 8)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(NSColor.controlBackgroundColor))
+                .background(themeManager.currentTheme.headerBackgroundColor)
 
             // Interactive Markdown Preview with clickable checkboxes
-            InteractiveMarkdownView(text: documentText, documentText: $documentText)
-                .background(Color(NSColor.textBackgroundColor))
+            ZStack(alignment: .topLeading) {
+                themeManager.currentTheme.backgroundColor
+                    .ignoresSafeArea()
+
+                InteractiveMarkdownView(text: documentText, documentText: $documentText)
+                    .padding(8)
+            }
         }
     }
 }
